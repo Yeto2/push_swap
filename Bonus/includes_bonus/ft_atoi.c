@@ -6,11 +6,21 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:19:32 by yessemna          #+#    #+#             */
-/*   Updated: 2024/02/23 22:42:54 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:03:28 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker.h"
+
+void	check_sign(const char *str, int *i, int *sign)
+{
+	if (str[*i] == '-' || str[*i] == '+')
+	{
+		if (str[*i] == '-')
+			*sign *= -1;
+		(*i)++;
+	}
+}
 
 int	ft_atoi(const char *str)
 {
@@ -20,21 +30,16 @@ int	ft_atoi(const char *str)
 
 	i = 0;
 	sign = 1;
-	nbr = 0	;
+	nbr = 0;
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	if(!str[i])
+	check_sign(str, &i, &sign);
+	if (!str[i])
 		exit(write(2, "Error\n", 6));
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nbr = (nbr * 10) + (str[i] - 48);
-		if((nbr * sign) > INT_MAX || (nbr * sign) < INT_MIN)
+		if ((nbr * sign) > INT_MAX || (nbr * sign) < INT_MIN)
 			exit(write(2, "Error\n", 6));
 		i++;
 	}

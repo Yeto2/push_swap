@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 17:45:51 by yessemna          #+#    #+#             */
-/*   Updated: 2024/02/24 18:40:16 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:08:03 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	put_in_stack(t_stack **stack_a, int nbr)
 	is_reperted = check_rept(stack_a, nbr);
 	new = ft_lstnew(nbr);
 	if (!new)
-		error(stack_a);
+		error(stack_a, 1);
 	if (is_reperted == 1)
-		error(stack_a);
+		error(stack_a, 1);
 	else
 		ft_lstadd_back(stack_a, new);
 }
@@ -50,18 +50,26 @@ void	initialize_stack(t_stack **stack_a, const char *argv)
 	int		k;
 	int		nbr;
 	char	**str;
+	int		i;
 
 	k = 0;
 	j = 0;
+	i = 0;
 	str = ft_split(argv, ' ');
 	if (str[0] == NULL)
-		error(stack_a);
+		error(stack_a, 1);
 	while (str[k])
 	{
 		nbr = ft_atoi(str[k]);
 		put_in_stack(stack_a, nbr);
 		k++;
 	}
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
 }
 
 /* ----------------- Index stack_a ----------------- */
@@ -115,6 +123,5 @@ int	is_sorted(t_stack **stack)
 	}
 	if (count == size2)
 		return (1);
-		
 	return (0);
 }

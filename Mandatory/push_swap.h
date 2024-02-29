@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 19:23:43 by yessemna          #+#    #+#             */
-/*   Updated: 2024/02/24 07:58:04 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:08:57 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*ft_strchr(const char *s, int c);
 /* ----- push_swap includes ----- */
 
 void	print_stack(t_stack **stack);
-void	error(t_stack **stack);
+void	error(t_stack **stack, int i);
 void	index_stack(t_stack **stack_a);
 void	initialize_stack(t_stack **stack_a, const char *argv);
 void	is_sorted(t_stack **stack);
@@ -79,5 +79,6 @@ void	sort_advanced(t_stack **stack_a,
 			t_stack **stack_b, int size, int to_div);
 void	push_max_num(t_stack **stack_a, t_stack **stack_b, int big_pos);
 void	push_small_num(t_stack **stack_a, t_stack **stack_b, int small_pos);
+void	free_stack(t_stack **stack);
 
 #endif

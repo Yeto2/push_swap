@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 22:40:14 by yessemna          #+#    #+#             */
-/*   Updated: 2024/02/24 18:40:20 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:35:02 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <limits.h>
-
 
 typedef struct s_stack
 {
@@ -39,22 +38,21 @@ char	*ft_strjoin(char const *s1, char const *s2, int index);
 int		ft_atoi(const char *str);
 size_t	ft_strlen(const char *s);
 int		ft_strcmp(const char *s1, const char *s2);
-// char    *ft_strjoin(char const *s1, char const *s2);
-char    **ft_split(char const *s, char c);
+char	**ft_split(char const *s, char c);
 t_stack	*ft_lstnew(int nbr);
 int		ft_lstsize(t_stack *lst);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
-int	ft_strcmp(const char *s1, const char *s2);
+int		ft_strcmp(const char *s1, const char *s2);
 void	initialize_stack(t_stack **stack_a, const char *argv);
-int	is_sorted(t_stack **stack);
+int		is_sorted(t_stack **stack);
 char	*ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-void	error(t_stack **stack);
+void	error(t_stack **stack, int i);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
-
-
+void	index_stack(t_stack **stack_a);
+void	free_stack(t_stack **a);
 void	pa(t_stack **stack_a, t_stack **stack_b);
 void	pb(t_stack **stack_a, t_stack **stack_b);
 void	sa(t_stack **stack_a);
@@ -66,6 +64,5 @@ void	rr(t_stack **stack_a, t_stack **stack_b);
 void	rra(t_stack **stack_a);
 void	rrb(t_stack **stack_b);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
-
 
 #endif

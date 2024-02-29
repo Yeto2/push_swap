@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 20:16:21 by yessemna          #+#    #+#             */
-/*   Updated: 2024/02/24 07:57:31 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/02/29 17:46:36 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char const *argv[])
 
 	i = 1;
 	if (argc < 2)
-		error(&stack_a);
+		error(&stack_a, 0);
 	while (argv[i])
 	{
 		initialize_stack(&stack_a, argv[i]);
@@ -29,5 +29,7 @@ int	main(int argc, char const *argv[])
 	index_stack(&stack_a);
 	is_sorted(&stack_a);
 	sort(&stack_a, &stack_b);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }
