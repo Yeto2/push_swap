@@ -6,7 +6,7 @@
 #    By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 21:56:01 by yessemna          #+#    #+#              #
-#    Updated: 2024/02/24 09:02:27 by yessemna         ###   ########.fr        #
+#    Updated: 2024/03/02 16:29:49 by yessemna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ RM = rm -f
 NAME = push_swap
 NAME_B = checker
 
-SRC = ./Mandatory/push_swap.c ./Mandatory/includes/ft_atoi.c ./Mandatory/includes/ft_isdigit.c ./Mandatory/includes/ft_lstadd_back.c\
+SRC = ./Mandatory/includes/push_swap.c ./Mandatory/includes/ft_atoi.c ./Mandatory/includes/ft_isdigit.c ./Mandatory/includes/ft_lstadd_back.c\
 	./Mandatory/includes/ft_lstlast.c ./Mandatory/includes/ft_lstnew.c ./Mandatory/includes/ft_lstsize.c ./Mandatory/includes/ft_calloc.c\
 	./Mandatory/includes/ft_substr.c ./Mandatory/includes/ft_strchr.c ./Mandatory/includes/ft_memset.c ./Mandatory/includes/ft_lstadd_front.c\
 	./Mandatory/includes/ft_split.c ./Mandatory/includes/ft_bzero.c ./Mandatory/includes/ft_strjoin.c ./Mandatory/includes/ft_strlen.c\
@@ -25,33 +25,34 @@ SRC = ./Mandatory/push_swap.c ./Mandatory/includes/ft_atoi.c ./Mandatory/include
 	./Mandatory/includes/sort_advanced.c ./Mandatory/includes/reverse_rotate.c ./Mandatory/includes/rotate.c\
 	./Mandatory/includes/swap.c ./Mandatory/includes/push.c\
 	
-SRC_B = ./Bonus/checker.c ./Bonus/includes_bonus/ft_atoi.c ./Bonus/includes_bonus/ft_lstadd_back.c\
+SRC_B = ./Bonus/includes_bonus/checker.c ./Bonus/includes_bonus/ft_atoi.c ./Bonus/includes_bonus/ft_lstadd_back.c\
 	./Bonus/includes_bonus/ft_lstnew.c ./Bonus/includes_bonus/ft_lstsize.c ./Bonus/includes_bonus/push.c\
 	./Bonus/includes_bonus/ft_split.c ./Bonus/includes_bonus/ft_strchr.c ./Bonus/includes_bonus/message.c\
 	./Bonus/includes_bonus/init_stack.c ./Bonus/includes_bonus/swap.c ./Bonus/includes_bonus/rotate.c\
 	./Bonus/includes_bonus/reverse_rotate.c ./Bonus/includes_bonus/ft_substr.c ./Bonus/includes_bonus/ft_bzero.c\
 	./Bonus/includes_bonus/ft_calloc.c  ./Bonus/includes_bonus/ft_memset.c ./Bonus/includes_bonus/get_next_line.c\
-	./Mandatory/includes/ft_strjoin.c ./Bonus/includes_bonus/ft_strlen.c ./Bonus/includes_bonus/ft_strcmp.c\
+	./Bonus/includes_bonus/ft_strjoin.c ./Bonus/includes_bonus/ft_strlen.c ./Bonus/includes_bonus/ft_strcmp.c\
 	
 
 OBJ = $(SRC:%.c=%.o)
 OBJ_B = $(SRC_B:%.c=%.o)
 
+
+all: $(NAME)
+
 $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+
+./Mandatory/includes/%.o: ./Mandatory/includes/%.c ./Mandatory/push_swap.h
+	$(CC) $(CFLAGS) -o $@ -c $<
+	
+bonus : $(NAME_B)
 
 $(NAME_B): $(OBJ_B)
 	@$(CC) $(CFLAGS) $(OBJ_B) -o $(NAME_B)
 
-%.o: %.c ./Mandatory/includes/push_swap.h
+./Bonus/includes_bonus/%.o: ./Bonus/includes_bonus/%.c ./Bonus/checker.h
 	$(CC) $(CFLAGS) -o $@ -c $<
-
-%.o: %.c ./Bonus/includes/checker.h
-	$(CC) $(CFLAGS) -o $@ -c $<
-
-all: $(NAME)
-
-bonus : $(NAME_B)
 
 clean:
 	@$(RM)	$(OBJ)	$(OBJ_B)
