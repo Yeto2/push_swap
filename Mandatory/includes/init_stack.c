@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 17:45:51 by yessemna          #+#    #+#             */
-/*   Updated: 2024/02/29 16:08:03 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/03/04 22:40:51 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	initialize_stack(t_stack **stack_a, const char *argv)
 	j = 0;
 	i = 0;
 	str = ft_split(argv, ' ');
-	if (str[0] == NULL)
+	if (!str || str[0] == NULL)
 		error(stack_a, 1);
 	while (str[k])
 	{
